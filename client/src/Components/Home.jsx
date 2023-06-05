@@ -1,11 +1,14 @@
 import React from 'react';
 
 import { 
-    Container,
+  Card,
+  Container,
+  Box
 } from '@mui/material'
 
 import Navbar from './Navbar';
 import CardProblem from './CardProblem';
+import CardDailyActivity from './CardDailyActivity';
 
 
 const Home = () => {
@@ -14,8 +17,17 @@ const Home = () => {
         <Navbar />
 
         <Container>
+          <Box sx={{
+                    display: 'flex',
+                    flexDirection: {xs: "column", md: "row"},
+                    gap: 2,
+                    justifyContent: "space-between"
+                }}>
             <CardProblem />
+            <CardDailyActivity />
+          </Box>
         </Container>
+        
         
         
     </div>
