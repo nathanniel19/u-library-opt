@@ -45,7 +45,7 @@ const ProblemData = () => {
                                         <TableCell align="right">{datas.unitBrand}</TableCell>
                                         <TableCell align="right">{datas.unitModel}</TableCell>
                                         <TableCell align="center">
-                                            <Button variant="contained">View File</Button>
+                                            <Button variant="contained" onClick={() => window.open(datas.unitUrl)}>View File</Button>
                                         </TableCell>
                                     </TableRow>
                                 )

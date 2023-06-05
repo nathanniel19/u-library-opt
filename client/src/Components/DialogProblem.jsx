@@ -31,7 +31,7 @@ const DialogProblem = () => {
         brand: "",
         model: "",
         problem: "",
-        url: null
+        url: ""
     };
     const [values, setValues] = useState(initialValue);
     const [files, setFiles] = useState(null);
@@ -55,21 +55,28 @@ const DialogProblem = () => {
     //Submit data condition
     const handleSubmit = (e) => {
         e.preventDefault();
-        Axios.post("http://localhost:3001/problemSubmit", {
-            brand: values.brand,
-            model: values.model,
-            problem: values.problem,
-            url: values.url
-        });
+        
         uploadBytes(storageRef, files)
             .then((snapshot) => {
                 console.log("files uploaded");
                 getDownloadURL(snapshot.ref)
                     .then(downloadURL => {
                         setValues({...values, url: downloadURL});
-                        console.log(downloadURL);
+
+                        
+                        
+                        //setTimeout(postDB, 3000)
+
+                        console.log(values.url)
+                        console.log(values)
+                        window.alert("Document Uploaded");
                     });
         });
+        Axios.post("http://localhost:3001/problemSubmit", {
+                            brand: values.brand,
+                            model: values.model,
+                            problem: values.problem,
+                            url: values.url});
         setDialogOpen(false);
         console.log(values);
         //window.location.reload();
